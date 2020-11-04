@@ -18,7 +18,7 @@ public class ColorMixingUtility {
 	
 	private static String toHex(int i) {
 		String hex = Integer.toHexString(i);
-		if(hex.length() == 1) { return "0" + hex; }
+		if(hex.length() == 1) return "0" + hex;
 		return hex;
 	}
 }
