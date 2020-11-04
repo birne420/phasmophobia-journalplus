@@ -16,8 +16,6 @@ import javax.swing.event.ChangeListener;
 import journalplus.gui.BasicPanel;
 import journalplus.gui.IThemeInfluenced;
 import journalplus.main.settings.SettingsIO;
-import journalplus.themes.DarkTheme;
-import journalplus.themes.DefaultTheme;
 import journalplus.utility.gridbagconstraints.GridBagConstraintsUtility;
 
 public class EinstellungenPanel extends BasicPanel implements ChangeListener, ActionListener {
@@ -46,7 +44,7 @@ public class EinstellungenPanel extends BasicPanel implements ChangeListener, Ac
 		this.labelWindowScale = new JLabel();
 		
 		this.checkboxDarkTheme = new JCheckBox("Dark Theme");
-		if(SettingsIO.getTheme().getThemeName().equals(new DarkTheme().getThemeName())) {
+		if(SettingsIO.getTheme().getThemeId().equals("dark")) {
 			this.checkboxDarkTheme.setSelected(true);
 		}
 		this.checkboxDarkTheme.addChangeListener(this);
@@ -97,15 +95,15 @@ public class EinstellungenPanel extends BasicPanel implements ChangeListener, Ac
 	}
 	private void updateTexts() {
 		this.labelWindowScale.setText(HTML_START + HTML_STRCOLOR(this.sliderWindowScale.getValue() + " ", ACCENT_COLOR) + HTML_STRCOLOR("(" + SettingsIO.getWindowSizeScale() + ")", SECONDARY_COLOR) + HTML_END);
-		this.labelTheme.setText(HTML_START + HTML_STRCOLOR(this.checkboxDarkTheme.isSelected() + " ", ACCENT_COLOR) + HTML_STRCOLOR("(" + (SettingsIO.getTheme().getThemeName().equals(new DarkTheme().getThemeName()) ? true : false) + ")", SECONDARY_COLOR) + HTML_END);
+		this.labelTheme.setText(HTML_START + HTML_STRCOLOR(this.checkboxDarkTheme.isSelected() + " ", ACCENT_COLOR) + HTML_STRCOLOR("(" + (SettingsIO.getTheme().getThemeId().equals("dark") ? true : false) + ")", SECONDARY_COLOR) + HTML_END);
 		this.labelLiveList.setText(HTML_START + HTML_STRCOLOR(this.checkboxLiveList.isSelected() + " ", ACCENT_COLOR) + HTML_STRCOLOR("(" + SettingsIO.getLiveList() + ")", SECONDARY_COLOR) + HTML_END);
 	}
 	private void saveData() {
 		SettingsIO.setWindowSizeScale(this.sliderWindowScale.getValue());
 		if(this.checkboxDarkTheme.isSelected()) {
-			SettingsIO.setTheme(new DarkTheme());
+			SettingsIO.setTheme("dark");
 		} else {
-			SettingsIO.setTheme(new DefaultTheme());
+			SettingsIO.setTheme("default");
 		}
 		SettingsIO.setLiveList(this.checkboxLiveList.isSelected());
 		SettingsIO.saveSets();

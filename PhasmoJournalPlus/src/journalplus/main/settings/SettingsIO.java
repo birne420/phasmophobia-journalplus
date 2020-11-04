@@ -19,9 +19,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import journalplus.themes.AbstractTheme;
-import journalplus.themes.DarkTheme;
-import journalplus.themes.DefaultTheme;
+import journalplus.gui.themes.ActualTheme;
+import journalplus.gui.themes.ThemeLoader;
 
 public class SettingsIO {
 	public static final String CONFIG_FILE = "PhasmoJournalConfig.xml";
@@ -43,15 +42,19 @@ public class SettingsIO {
 		init();
 		return Integer.parseInt(settingWindowSizeScale);
 	}
-	public static void setTheme(AbstractTheme theme) {
-		settingTheme = theme.getThemeName();
+	public static void setTheme(String themeId) {
+		settingTheme = themeId;
 	}
-	public static AbstractTheme getTheme() {
+	public static ActualTheme getTheme() {
 		init();
-		AbstractTheme defaultTheme = new DefaultTheme();
-		AbstractTheme darkTheme = new DarkTheme();
-		if(settingTheme.toLowerCase().equals(darkTheme.getThemeName())) return darkTheme;
-		return defaultTheme;
+		String themeId = settingTheme.toLowerCase();
+		
+		ThemeLoader loader = new ThemeLoader();
+		if(!loader.loadTheme(themeId)) {
+			loader.loadTheme("default");
+		}
+		ActualTheme theme = loader.get();
+		return theme;
 	}
 	public static void setLiveList(boolean bool) {
 		settingLiveList = "" + bool;

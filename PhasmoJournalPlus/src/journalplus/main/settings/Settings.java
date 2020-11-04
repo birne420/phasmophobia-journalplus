@@ -2,10 +2,10 @@ package journalplus.main.settings;
 
 import java.awt.Color;
 
-import journalplus.themes.*;
+import journalplus.gui.themes.ActualTheme;
 
 public class Settings {
-	public static final String EINSTELLUNG_VERSION_STRING = "v1.34[prior1]";
+	public static final String EINSTELLUNG_VERSION_STRING = "v1.35";
 	
 	public static final String EINSTELLUNG_TITEL = "Phasmophobia - JournalPlus " + EINSTELLUNG_VERSION_STRING;
 	public static final String EINSTELLUNG_TITEL_SEPARATOR = " / ";
@@ -16,7 +16,7 @@ public class Settings {
 
 	public static boolean EINSTELLUNG_GEISTERLISTE_LIVE = SettingsIO.getLiveList();
 	
-	public static AbstractTheme EINSTELLUNG_THEME = SettingsIO.getTheme();
+	public static ActualTheme EINSTELLUNG_THEME = SettingsIO.getTheme();
 	public static String EINSTELLUNG_THEME_POSITIVE = EINSTELLUNG_THEME.getEinstellungThemePositive();
 	public static String EINSTELLUNG_THEME_NEGATIVE = EINSTELLUNG_THEME.getEinstellungThemeNegative();
 	public static String EINSTELLUNG_THEME_NEUTRAL = EINSTELLUNG_THEME.getEinstellungThemeNeutral();

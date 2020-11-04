@@ -1,0 +1,17 @@
+{
+  "theme": {
+    "id": "default",
+    "name": "Default Theme"
+  },
+  "awt_colors": {
+    "background": "null",
+    "foreground": "null"
+  },
+  "colors": {
+    "positive": "#58ad56",
+    "negative": "#ff3700",
+    "neutral": "#395f7f",
+    "decent": "#ababab",
+    "signal": "#ff9e00"
+  }
+}
