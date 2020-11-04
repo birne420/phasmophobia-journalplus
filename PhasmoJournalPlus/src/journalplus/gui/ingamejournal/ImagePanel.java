@@ -31,7 +31,7 @@ public class ImagePanel extends JPanel {
 		if(page < 1) page = 1;
 		if(page > 12) page = 12;
 		
-		String requestedFile = "/journalplus/assets/s" + page + ".jpg";
+		String requestedFile = "/journalplus/assets/ingamejournal/s" + page + ".jpg";
 		URL url = this.getClass().getResource(requestedFile);
 		
 		try {

@@ -5,7 +5,7 @@ import java.awt.Color;
 import journalplus.themes.*;
 
 public class Settings {
-	public static final String EINSTELLUNG_VERSION_STRING = "v1.33";
+	public static final String EINSTELLUNG_VERSION_STRING = "v1.34[prior1]";
 	
 	public static final String EINSTELLUNG_TITEL = "Phasmophobia - JournalPlus " + EINSTELLUNG_VERSION_STRING;
 	public static final String EINSTELLUNG_TITEL_SEPARATOR = " / ";

@@ -1,0 +1,17 @@
+{
+  "theme": {
+    "id": "dark",
+    "name": "Dark Theme"
+  },
+  "awt_colors": {
+    "background": "DARK_GRAY",
+    "foreground": "WHITE"
+  },
+  "colors": {
+    "positive": "#58ad56",
+    "negative": "#ff1e00",
+    "neutral": "#6f94b7",
+    "decent": "#ababab",
+    "signal": "#ff9e00"
+  }
+}
