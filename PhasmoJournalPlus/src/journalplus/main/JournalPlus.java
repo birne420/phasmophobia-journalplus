@@ -7,11 +7,3 @@ public class JournalPlus {
 		new MainFrame();
 	}
 }
-/*
-
-Themes als JSon
-Config check
-Faktoren für Auswertung selbst setzen
-config andere location
-
-*/
