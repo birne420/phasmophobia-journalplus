@@ -45,4 +45,16 @@ public class BasicUtility {
 		}
 		
 	}
+	public static boolean execute(String path) {
+		ArrayList<String> command = new ArrayList<String>();
+		command.add(path);
+		ProcessBuilder builder = new ProcessBuilder(command);
+		try {
+			builder.start();
+			return true;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

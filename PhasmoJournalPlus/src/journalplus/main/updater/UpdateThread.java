@@ -1,16 +1,28 @@
 package journalplus.main.updater;
 
+import javax.swing.JOptionPane;
+
+import journalplus.utility.BasicUtility;
+
 public class UpdateThread extends Thread {
 	private UpdateListener listener;
 	
 	@Override
 	public void run() {
 		this.listener = new UpdateListener();
-		System.out.println("Update-Check erfolgreich: " + this.listener.setupCorrect());
-		System.out.println("Neue Version verfügbar: " + this.listener.isUpdateAvailable());
-		if(this.listener.isUpdateAvailable()) {
-			System.out.println("Neue Version: " + this.listener.getVersion());
-			System.out.println("Version Link: " + this.listener.getVersionLink());
+		
+		if(this.listener.setupCorrect()) {
+			if(this.listener.isUpdateAvailable()) {
+				int result = JOptionPane.showConfirmDialog(null, "Eine neue Version ist verfügbar: " + this.listener.getVersion() + "\nHerunterladen?", "Update verfügbar", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if(result == JOptionPane.YES_OPTION) {
+					BasicUtility.execute(this.listener.getVersionLink());
+				}
+			} else {
+				return;
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "Beim Suchen nach einer aktuelleren Version trat ein Fehler auf.", "Fehler", JOptionPane.ERROR_MESSAGE);
 		}
+		
 	}
 }
