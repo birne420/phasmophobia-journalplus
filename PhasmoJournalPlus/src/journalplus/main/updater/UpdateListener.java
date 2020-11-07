@@ -25,6 +25,8 @@ public class UpdateListener {
 				JSONObject obj = new JSONObject(jsonContent);
 				this.onlineVersion = obj.getString("current_version");
 				this.onlineVersionLink = obj.getString("update_url");
+				//System.out.println("Online-Version: " + this.onlineVersion);
+				//System.out.println("Offline-Version: " + Settings.EINSTELLUNG_VERSION_STRING);
 				if(!this.onlineVersion.equals(Settings.EINSTELLUNG_VERSION_STRING)) {
 					this.isUpdateAvailable = true;
 				}
