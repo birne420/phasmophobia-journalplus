@@ -1,4 +1,4 @@
-package journalplus.utility.gridbagconstraints;
+package journalplus.utility;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;

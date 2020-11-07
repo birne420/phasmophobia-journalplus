@@ -1,7 +1,9 @@
 package journalplus.gui.steckbrief;
 
 import java.awt.GridBagLayout;
+
 import javax.swing.JLabel;
+
 import journalplus.gui.BasicPanel;
 import journalplus.gui.IThemeInfluenced;
 import journalplus.journal.Beweis;
@@ -11,7 +13,7 @@ import journalplus.journal.Schwaeche;
 import journalplus.journal.Staerke;
 import journalplus.journal.auswertung.GeistEvaluator;
 import journalplus.journal.vermutung.Vermutung;
-import journalplus.utility.gridbagconstraints.*;
+import journalplus.utility.GridBagConstraintsUtility;
 
 public class SteckbriefPanel extends BasicPanel {
 	private static final long serialVersionUID = 1L;

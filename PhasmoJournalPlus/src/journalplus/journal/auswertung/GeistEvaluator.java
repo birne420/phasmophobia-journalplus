@@ -1,6 +1,7 @@
 package journalplus.journal.auswertung;
 
 import journalplus.journal.*;
+import journalplus.main.settings.Settings;
 import journalplus.utility.BasicUtility;
 
 public class GeistEvaluator {
@@ -9,10 +10,13 @@ public class GeistEvaluator {
 	private double schwaecheFaktor = 1;
 	private double detailFaktor = 1;
 
-	private static final double faktorDJ = 2d;
-	private static final double faktorVJ = 1.2d;
-	private static final double faktorVN = 0.8d;
-	private static final double faktorDN = 0d;
+	private static final double faktorDJ = Settings.EINSTELLUNG_AUSWERTUNG_FAKTOR_DEFJA;
+	private static final double faktorVJ = Settings.EINSTELLUNG_AUSWERTUNG_FAKTOR_VERJA;
+	private static final double faktorVN = Settings.EINSTELLUNG_AUSWERTUNG_FAKTOR_VERNEIN;
+	private static final double faktorDN = Settings.EINSTELLUNG_AUSWERTUNG_FAKTOR_DEFNEIN;
+	
+	private static final double faktorDJ2 = Settings.EINSTELLUNG_AUSWERTUNG_FAKTOR_DEFJA2;
+	private static final double faktorDN2 = Settings.EINSTELLUNG_AUSWERTUNG_FAKTOR_DEFNEIN2;
 	
 	public GeistEvaluator(Geist geist) {
 		Beweis[] geistBeweise = geist.getBeweise();
@@ -23,7 +27,7 @@ public class GeistEvaluator {
 		for(Beweis geistBeweis : geistBeweise) {
 			switch(geistBeweis.getVermutung()) {
 				case DEFINITIV_JA:
-					this.beweisFaktor *= faktorDJ * faktorDJ;
+					this.beweisFaktor *= faktorDJ2;
 					break;
 				case VERMUTLICH_JA:
 					this.beweisFaktor *= faktorVJ;
@@ -49,7 +53,7 @@ public class GeistEvaluator {
 				this.staerkeFaktor *= faktorVN;
 				break;
 			case DEFINITIV_NEIN:
-				this.staerkeFaktor *= faktorVN * faktorVN;
+				this.staerkeFaktor *= faktorDN2;
 				break;
 			case NICHTS: default: break;
 		}
@@ -65,7 +69,7 @@ public class GeistEvaluator {
 				this.schwaecheFaktor *= faktorVN;
 				break;
 			case DEFINITIV_NEIN:
-				this.schwaecheFaktor *= faktorVN * faktorVN;
+				this.schwaecheFaktor *= faktorDN2;
 				break;
 			case NICHTS: default: break;
 		}
@@ -82,7 +86,7 @@ public class GeistEvaluator {
 					this.detailFaktor *= faktorVN;
 					break;
 				case DEFINITIV_NEIN:
-					this.detailFaktor *= faktorVN * faktorVN;
+					this.detailFaktor *= faktorDN2;
 					break;
 				case NICHTS: default: break;
 			}

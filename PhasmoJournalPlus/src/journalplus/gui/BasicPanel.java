@@ -6,8 +6,8 @@ import java.awt.Insets;
 import javax.swing.JPanel;
 
 import journalplus.main.settings.Settings;
-import journalplus.utility.gridbagconstraints.GridBagConstraintsPattern;
-import journalplus.utility.htmltextformat.HTMLTextFormatUtility;
+import journalplus.utility.GridBagConstraintsPattern;
+import journalplus.utility.HTMLTextFormatUtility;
 
 public abstract class BasicPanel extends JPanel implements IThemeInfluenced {
 	private static final long serialVersionUID = 1L;

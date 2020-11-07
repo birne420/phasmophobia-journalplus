@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import org.json.JSONObject;
 
-import journalplus.utility.awtcolors.AwtColorString;
+import journalplus.utility.AwtColorString;
 
 public class ThemeLoader {
 	private ActualTheme theme;

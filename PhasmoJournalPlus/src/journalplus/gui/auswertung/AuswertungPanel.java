@@ -11,7 +11,7 @@ import journalplus.journal.*;
 import journalplus.journal.auswertung.*;
 import journalplus.journal.vermutung.Vermutung;
 import journalplus.utility.BasicUtility;
-import journalplus.utility.gridbagconstraints.GridBagConstraintsUtility;
+import journalplus.utility.GridBagConstraintsUtility;
 
 public class AuswertungPanel extends BasicPanel {
 	private static final long serialVersionUID = 1L;

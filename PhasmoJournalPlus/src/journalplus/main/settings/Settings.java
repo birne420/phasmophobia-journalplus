@@ -5,9 +5,9 @@ import java.awt.Color;
 import journalplus.gui.themes.ActualTheme;
 
 public class Settings {
-	public static final String EINSTELLUNG_VERSION_STRING = "v1.35";
+	public static final String EINSTELLUNG_VERSION_STRING = "v1.4";
 	
-	public static final String EINSTELLUNG_TITEL = "Phasmophobia - JournalPlus " + EINSTELLUNG_VERSION_STRING;
+	public static final String EINSTELLUNG_TITEL = "Phasmophobia - JournalPlus ";
 	public static final String EINSTELLUNG_TITEL_SEPARATOR = " / ";
 
 	private static int scalingFactor = SettingsIO.getWindowSizeScale();
@@ -24,4 +24,12 @@ public class Settings {
 	public static String EINSTELLUNG_THEME_SIGNAL = EINSTELLUNG_THEME.getEinstellungThemeSignal();
 	public static Color EINSTELLUNG_THEME_AWTBG = EINSTELLUNG_THEME.getEinstellungThemeAwtBg();
 	public static Color EINSTELLUNG_THEME_AWTFG = EINSTELLUNG_THEME.getEinstellungThemeAwtFg();
+
+	public static double EINSTELLUNG_AUSWERTUNG_FAKTOR_DEFJA = SettingsIO.getAuswertungFaktorDefJa();
+	public static double EINSTELLUNG_AUSWERTUNG_FAKTOR_VERJA = SettingsIO.getAuswertungFaktorVerJa();
+	public static double EINSTELLUNG_AUSWERTUNG_FAKTOR_VERNEIN = SettingsIO.getAuswertungFaktorVerNein();
+	public static double EINSTELLUNG_AUSWERTUNG_FAKTOR_DEFNEIN = SettingsIO.getAuswertungFaktorDefNein();
+	
+	public static double EINSTELLUNG_AUSWERTUNG_FAKTOR_DEFJA2 = SettingsIO.getAuswertungFaktorDefJa2();
+	public static double EINSTELLUNG_AUSWERTUNG_FAKTOR_DEFNEIN2 = SettingsIO.getAuswertungFaktorDefNein2();
 }

@@ -1,4 +1,4 @@
-package journalplus.utility.htmltextformat;
+package journalplus.utility;
 
 public class HTMLTextFormatUtility {
 	public static final String START = "<html><body>";

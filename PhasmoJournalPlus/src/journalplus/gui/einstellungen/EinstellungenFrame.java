@@ -7,7 +7,7 @@ public class EinstellungenFrame extends BasicFrame {
 
 	public EinstellungenFrame() {
 		super(WINDOW_TITLE + SEPARATOR + "Einstellungen");
-		this.setSize(500, 250);
+		this.setSize(600, 600);
 		this.setLocationRelativeTo(null);
 		
         this.setResizable(false);

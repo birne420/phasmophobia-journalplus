@@ -1,4 +1,4 @@
-package journalplus.utility.colormixingutility;
+package journalplus.utility;
 
 public class HTMLColorString {
 	private String realHexString;

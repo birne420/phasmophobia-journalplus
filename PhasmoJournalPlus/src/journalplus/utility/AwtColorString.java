@@ -1,8 +1,6 @@
-package journalplus.utility.awtcolors;
+package journalplus.utility;
 
 import java.awt.Color;
-
-import journalplus.utility.colormixingutility.HTMLColorString;
 
 public class AwtColorString {
 	public static Color fromString(String str) {

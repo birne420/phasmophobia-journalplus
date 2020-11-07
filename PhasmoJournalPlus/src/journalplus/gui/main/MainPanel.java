@@ -25,9 +25,9 @@ import journalplus.journal.auswertung.Ranking;
 import journalplus.journal.vermutung.IVermutung;
 import journalplus.journal.vermutung.Vermutung;
 import journalplus.main.settings.Settings;
-import journalplus.utility.colormixingutility.ColorMixingUtility;
-import journalplus.utility.gridbagconstraints.GridBagConstraintsPattern;
-import journalplus.utility.gridbagconstraints.GridBagConstraintsUtility;
+import journalplus.utility.ColorMixingUtility;
+import journalplus.utility.GridBagConstraintsPattern;
+import journalplus.utility.GridBagConstraintsUtility;
 
 public class MainPanel extends BasicPanel implements ActionListener, ListSelectionListener, MouseListener {
 	private static final long serialVersionUID = 1L;
