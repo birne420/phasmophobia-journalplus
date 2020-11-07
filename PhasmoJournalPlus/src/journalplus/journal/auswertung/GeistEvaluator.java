@@ -93,7 +93,5 @@ public class GeistEvaluator {
 		}
 	}
 	
-	public double get() {
-		return BasicUtility.runden(beweisFaktor * staerkeFaktor * schwaecheFaktor * detailFaktor, 2);
-	}
+	public double get() { return BasicUtility.runden(beweisFaktor * staerkeFaktor * schwaecheFaktor * detailFaktor, 2); }
 }

@@ -2,42 +2,31 @@ package journalplus.main.settings;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import javax.swing.JOptionPane;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
+import org.json.JSONException;
+import org.json.JSONObject;
 import journalplus.gui.themes.ActualTheme;
 import journalplus.gui.themes.ThemeLoader;
 import journalplus.utility.BasicUtility;
 
 public class SettingsIO {
-	public static final String CONFIG_FILE = "JournalPlus.cfg";
+	public static final String CONFIG_FILE = System.getProperty("java.io.tmpdir") + "journal_plus_config.json";
 
-	private static final String CONFIG_XML_BASE = "journal_plus_config";
-	private static final String CONFIG_XML_WINDOWSIZESCALE = "window_scaling";
-	private static final String CONFIG_XML_THEME = "active_theme";
-	private static final String CONFIG_XML_LIVELIST = "livelist_enabled";
-	private static final String CONFIG_XML_UPDATE_CHECK = "update_check";
-	private static final String CONFIG_XML_AUSWERTUNG_DEFJA = "evaluation_def_yes";
-	private static final String CONFIG_XML_AUSWERTUNG_VERJA = "evaluation_prob_yes";
-	private static final String CONFIG_XML_AUSWERTUNG_VERNEIN = "evaluation_prob_no";
-	private static final String CONFIG_XML_AUSWERTUNG_DEFNEIN = "evaluation_def_no";
-	private static final String CONFIG_XML_AUSWERTUNG_DEFJA2 = "evaluation_def_yes_2";
-	private static final String CONFIG_XML_AUSWERTUNG_DEFNEIN2 = "evaluation_def_no_2";
+	private static final String CONFIG_JSON_BASE = "journal_plus_config";
+	private static final String CONFIG_JSON_WINDOWSIZESCALE = "window_scaling";
+	private static final String CONFIG_JSON_THEME = "active_theme";
+	private static final String CONFIG_JSON_LIVELIST = "livelist_enabled";
+	private static final String CONFIG_JSON_UPDATE_CHECK = "update_check";
+	private static final String CONFIG_JSON_AUSWERTUNG_DEFJA = "evaluation_def_yes";
+	private static final String CONFIG_JSON_AUSWERTUNG_VERJA = "evaluation_prob_yes";
+	private static final String CONFIG_JSON_AUSWERTUNG_VERNEIN = "evaluation_prob_no";
+	private static final String CONFIG_JSON_AUSWERTUNG_DEFNEIN = "evaluation_def_no";
+	private static final String CONFIG_JSON_AUSWERTUNG_DEFJA2 = "evaluation_def_yes_2";
+	private static final String CONFIG_JSON_AUSWERTUNG_DEFNEIN2 = "evaluation_def_no_2";
 
 	private static String settingWindowSizeScale = "64";
 	private static String settingTheme = "default";
@@ -148,130 +137,66 @@ public class SettingsIO {
 	}
 
 	private static boolean loadConfig() {
-		File settingsFile = new File(CONFIG_FILE);
-		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder documentBuilder;
 		try {
-			documentBuilder = documentBuilderFactory.newDocumentBuilder();
-		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-			return false;
-		}
-		Document document;
-		try {
-			document = documentBuilder.parse(settingsFile);
-		} catch (SAXException | IOException e) {
-			e.printStackTrace();
-			return false;
-		}
-		NodeList list = document.getElementsByTagName(CONFIG_XML_BASE);
-		for(int i = 0; i < list.getLength(); i++) {
-			Node node = list.item(i);
-			if(node.getNodeType() == Node.ELEMENT_NODE) {
-				Element element = (Element) node;
-				configVersion = element.getElementsByTagName("cfg_version").item(0).getTextContent();
-				
-				try {
-					settingWindowSizeScale = element.getElementsByTagName(CONFIG_XML_WINDOWSIZESCALE).item(0).getTextContent();
-					settingTheme = element.getElementsByTagName(CONFIG_XML_THEME).item(0).getTextContent();
-					settingLiveList = element.getElementsByTagName(CONFIG_XML_LIVELIST).item(0).getTextContent();
-					settingUpdateCheck = element.getElementsByTagName(CONFIG_XML_UPDATE_CHECK).item(0).getTextContent();
-					settingAuswertungFaktorDefJa = element.getElementsByTagName(CONFIG_XML_AUSWERTUNG_DEFJA).item(0).getTextContent();
-					settingAuswertungFaktorVerJa = element.getElementsByTagName(CONFIG_XML_AUSWERTUNG_VERJA).item(0).getTextContent();
-					settingAuswertungFaktorVerNein = element.getElementsByTagName(CONFIG_XML_AUSWERTUNG_VERNEIN).item(0).getTextContent();
-					settingAuswertungFaktorDefNein = element.getElementsByTagName(CONFIG_XML_AUSWERTUNG_DEFNEIN).item(0).getTextContent();
-					settingAuswertungFaktorDefJa2 = element.getElementsByTagName(CONFIG_XML_AUSWERTUNG_DEFJA2).item(0).getTextContent();
-					settingAuswertungFaktorDefNein2 = element.getElementsByTagName(CONFIG_XML_AUSWERTUNG_DEFNEIN2).item(0).getTextContent();
-					return true;
-				} catch(NullPointerException nullPtrExc) {
-					if(configVersionCheck()) {
-						JOptionPane.showMessageDialog(null, "Einstellungen wurden zurückgesetzt, da die Konfigurationsdatei beschädigt war.", "Einstellungen", JOptionPane.INFORMATION_MESSAGE);
-					} else {
-						JOptionPane.showMessageDialog(null, "Einstellungen wurden zurückgesetzt, da sich das Konfigurationsformat in der neuen Version geändert hat.", "Einstellungen", JOptionPane.INFORMATION_MESSAGE);
-					}
-					deleteConfig();
-					init();
-					return false;
+			String jsonString = Files.readString(Paths.get(CONFIG_FILE));
+			
+			JSONObject jsonObject = new JSONObject(jsonString);
+			JSONObject configBase = jsonObject.getJSONObject(CONFIG_JSON_BASE);
+			configVersion = configBase.getString("config_version");
+			
+			try {
+				settingWindowSizeScale = configBase.getString(CONFIG_JSON_WINDOWSIZESCALE);
+				settingTheme = configBase.getString(CONFIG_JSON_THEME);
+				settingLiveList = configBase.getString(CONFIG_JSON_LIVELIST);
+				settingUpdateCheck = configBase.getString(CONFIG_JSON_UPDATE_CHECK);
+				settingAuswertungFaktorDefJa = configBase.getString(CONFIG_JSON_AUSWERTUNG_DEFJA);
+				settingAuswertungFaktorVerJa = configBase.getString(CONFIG_JSON_AUSWERTUNG_VERJA);
+				settingAuswertungFaktorVerNein = configBase.getString(CONFIG_JSON_AUSWERTUNG_VERNEIN);
+				settingAuswertungFaktorDefNein = configBase.getString(CONFIG_JSON_AUSWERTUNG_DEFNEIN);
+				settingAuswertungFaktorDefJa2 = configBase.getString(CONFIG_JSON_AUSWERTUNG_DEFJA2);
+				settingAuswertungFaktorDefNein2 = configBase.getString(CONFIG_JSON_AUSWERTUNG_DEFNEIN2);
+				return true;
+			} catch(JSONException ex) {
+				if(configVersionCheck()) {
+					JOptionPane.showMessageDialog(null, "Einstellungen wurden zurückgesetzt, da die Konfigurationsdatei beschädigt war.", "Einstellungen", JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(null, "Einstellungen wurden zurückgesetzt, da sich das Konfigurationsformat in der neuen Version geändert hat.", "Einstellungen", JOptionPane.INFORMATION_MESSAGE);
 				}
+				deleteConfig();
+				init();
+				return false;
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
 		}
-		return false;
 	}
 	private static boolean saveConfig() {
-		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder documentBuilder;
+		JSONObject configObject = new JSONObject();
+		
+		JSONObject configBase = new JSONObject();
+
+		configBase.put("config_version", Settings.EINSTELLUNG_VERSION_STRING);
+		configBase.put(CONFIG_JSON_WINDOWSIZESCALE, settingWindowSizeScale);
+		configBase.put(CONFIG_JSON_THEME, settingTheme);
+		configBase.put(CONFIG_JSON_LIVELIST, settingLiveList);
+		configBase.put(CONFIG_JSON_UPDATE_CHECK, settingUpdateCheck);
+		configBase.put(CONFIG_JSON_AUSWERTUNG_DEFJA, settingAuswertungFaktorDefJa);
+		configBase.put(CONFIG_JSON_AUSWERTUNG_VERJA, settingAuswertungFaktorVerJa);
+		configBase.put(CONFIG_JSON_AUSWERTUNG_VERNEIN, settingAuswertungFaktorVerNein);
+		configBase.put(CONFIG_JSON_AUSWERTUNG_DEFNEIN, settingAuswertungFaktorDefNein);
+		configBase.put(CONFIG_JSON_AUSWERTUNG_DEFJA2, settingAuswertungFaktorDefJa2);
+		configBase.put(CONFIG_JSON_AUSWERTUNG_DEFNEIN2, settingAuswertungFaktorDefNein2);
+		
+		configObject.put(CONFIG_JSON_BASE, configBase);
+		
 		try {
-			documentBuilder = documentBuilderFactory.newDocumentBuilder();
-		} catch (ParserConfigurationException e1) {
-			e1.printStackTrace();
-			return false;
-		}
-		Document document = documentBuilder.newDocument();
-		Element elementConfig = document.createElement(CONFIG_XML_BASE);
-		
-		Element elementConfigVersion = document.createElement("cfg_version");
-		elementConfigVersion.setTextContent(Settings.EINSTELLUNG_VERSION_STRING);
-		
-		Element elementConfigWindowSizeScale = document.createElement(CONFIG_XML_WINDOWSIZESCALE);
-		elementConfigWindowSizeScale.setTextContent(settingWindowSizeScale);
-		
-		Element elementConfigTheme = document.createElement(CONFIG_XML_THEME);
-		elementConfigTheme.setTextContent(settingTheme);
-		
-		Element elementConfigLiveList = document.createElement(CONFIG_XML_LIVELIST);
-		elementConfigLiveList.setTextContent(settingLiveList);
-		
-		Element elementConfigUpdateCheck = document.createElement(CONFIG_XML_UPDATE_CHECK);
-		elementConfigUpdateCheck.setTextContent(settingUpdateCheck);
-		
-		Element elementConfigAuswertungDefJa = document.createElement(CONFIG_XML_AUSWERTUNG_DEFJA);
-		elementConfigAuswertungDefJa.setTextContent(settingAuswertungFaktorDefJa);
-		
-		Element elementConfigAuswertungVerJa = document.createElement(CONFIG_XML_AUSWERTUNG_VERJA);
-		elementConfigAuswertungVerJa.setTextContent(settingAuswertungFaktorVerJa);
-		
-		Element elementConfigAuswertungVerNein = document.createElement(CONFIG_XML_AUSWERTUNG_VERNEIN);
-		elementConfigAuswertungVerNein.setTextContent(settingAuswertungFaktorVerNein);
-		
-		Element elementConfigAuswertungDefNein = document.createElement(CONFIG_XML_AUSWERTUNG_DEFNEIN);
-		elementConfigAuswertungDefNein.setTextContent(settingAuswertungFaktorDefNein);
-		
-		Element elementConfigAuswertungDefJa2 = document.createElement(CONFIG_XML_AUSWERTUNG_DEFJA2);
-		elementConfigAuswertungDefJa2.setTextContent(settingAuswertungFaktorDefJa2);
-		
-		Element elementConfigAuswertungDefNein2 = document.createElement(CONFIG_XML_AUSWERTUNG_DEFNEIN2);
-		elementConfigAuswertungDefNein2.setTextContent(settingAuswertungFaktorDefNein2);
-		
-		elementConfig.appendChild(elementConfigVersion);
-		elementConfig.appendChild(elementConfigWindowSizeScale);
-		elementConfig.appendChild(elementConfigTheme);
-		elementConfig.appendChild(elementConfigLiveList);
-		elementConfig.appendChild(elementConfigUpdateCheck);
-		elementConfig.appendChild(elementConfigAuswertungDefJa);
-		elementConfig.appendChild(elementConfigAuswertungVerJa);
-		elementConfig.appendChild(elementConfigAuswertungVerNein);
-		elementConfig.appendChild(elementConfigAuswertungDefNein);
-		elementConfig.appendChild(elementConfigAuswertungDefJa2);
-		elementConfig.appendChild(elementConfigAuswertungDefNein2);
-		
-		document.appendChild(elementConfig);
-		TransformerFactory transformerFactory = TransformerFactory.newInstance();
-		Transformer transformer;
-		try {
-			transformer = transformerFactory.newTransformer();
-		} catch (TransformerConfigurationException e) {
+			Files.writeString(Paths.get(CONFIG_FILE), configObject.toString(), StandardCharsets.UTF_8);
+			return true;
+		} catch (IOException e) {
 			e.printStackTrace();
 			return false;
 		}
-		DOMSource source = new DOMSource(document);
-		StreamResult streamResult = new StreamResult(new File(CONFIG_FILE));
-		try {
-			transformer.transform(source, streamResult);
-		} catch (TransformerException e) {
-			e.printStackTrace();
-			return false;
-		}
-		return true;
 	}
 	public static void deleteConfig() {
 		new File(CONFIG_FILE).delete();
