@@ -142,16 +142,17 @@ public class EinstellungenPanel extends BasicPanel implements ChangeListener, Ac
 		this.add(this.textboxAuswertungVerNein, GridBagConstraintsUtility.build(2, yCoord, GBCPATTERN_SIDED_DETERMINANT));
 		yCoord = 7;
 		this.add(new JLabel(HTML_START + HTML_STRCOLOR("Auswertungsfaktor 'Definitiv Nein'", PRIMARY_COLOR) + ":" + HTML_END), GridBagConstraintsUtility.build(0, yCoord, GBCPATTERN_SIDED));
-		this.add(this.labelAuswertungDefNein, GridBagConstraintsUtility.build(1, yCoord, GBCPATTERN_SIDED));
-		this.add(this.textboxAuswertungDefNein, GridBagConstraintsUtility.build(2, yCoord, GBCPATTERN_SIDED_DETERMINANT));
+		this.add(this.labelAuswertungDefNein2, GridBagConstraintsUtility.build(1, yCoord, GBCPATTERN_SIDED));
+		this.add(this.textboxAuswertungDefNein2, GridBagConstraintsUtility.build(2, yCoord, GBCPATTERN_SIDED_DETERMINANT));
 		yCoord = 8;
 		this.add(new JLabel(HTML_START + HTML_STRCOLOR("Auswertungsfaktor 'Definitiv Ja' (Beweise)", PRIMARY_COLOR) + ":" + HTML_END), GridBagConstraintsUtility.build(0, yCoord, GBCPATTERN_SIDED));
 		this.add(this.labelAuswertungDefJa2, GridBagConstraintsUtility.build(1, yCoord, GBCPATTERN_SIDED));
 		this.add(this.textboxAuswertungDefJa2, GridBagConstraintsUtility.build(2, yCoord, GBCPATTERN_SIDED_DETERMINANT));
 		yCoord = 9;
-		this.add(new JLabel(HTML_START + HTML_STRCOLOR("Auswertungsfaktor 'Definitiv Nein' (nicht Beweise)", PRIMARY_COLOR) + ":" + HTML_END), GridBagConstraintsUtility.build(0, yCoord, GBCPATTERN_SIDED));
-		this.add(this.labelAuswertungDefNein2, GridBagConstraintsUtility.build(1, yCoord, GBCPATTERN_SIDED));
-		this.add(this.textboxAuswertungDefNein2, GridBagConstraintsUtility.build(2, yCoord, GBCPATTERN_SIDED_DETERMINANT));
+		this.add(new JLabel(HTML_START + HTML_STRCOLOR("Auswertungsfaktor 'Definitiv Nein' (Beweise)", PRIMARY_COLOR) + ":" + HTML_END), GridBagConstraintsUtility.build(0, yCoord, GBCPATTERN_SIDED));
+		this.add(this.labelAuswertungDefNein, GridBagConstraintsUtility.build(1, yCoord, GBCPATTERN_SIDED));
+		this.add(this.textboxAuswertungDefNein, GridBagConstraintsUtility.build(2, yCoord, GBCPATTERN_SIDED_DETERMINANT));
+
 		
 		yCoord = 10;
 		//Version

@@ -11,7 +11,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import journalplus.gui.themes.ActualTheme;
 import journalplus.gui.themes.ThemeLoader;
-import journalplus.utility.BasicUtility;
 
 public class SettingsIO {
 	public static final String CONFIG_FILE = System.getProperty("java.io.tmpdir") + "journal_plus_config.json";
@@ -28,26 +27,26 @@ public class SettingsIO {
 	private static final String CONFIG_JSON_AUSWERTUNG_DEFJA2 = "evaluation_def_yes_2";
 	private static final String CONFIG_JSON_AUSWERTUNG_DEFNEIN2 = "evaluation_def_no_2";
 
-	private static String settingWindowSizeScale = "64";
+	private static int settingWindowSizeScale = 64;
 	private static String settingTheme = "default";
-	private static String settingLiveList = "true";
-	private static String settingUpdateCheck = "true";
+	private static boolean settingLiveList = true;
+	private static boolean settingUpdateCheck = true;
 	private static String configVersion = null;
 	
-	private static String settingAuswertungFaktorDefJa = "2.0";
-	private static String settingAuswertungFaktorVerJa = "1.2";
-	private static String settingAuswertungFaktorVerNein = "0.8";
-	private static String settingAuswertungFaktorDefNein = "0.0";
+	private static double settingAuswertungFaktorDefJa = 2.0d;
+	private static double settingAuswertungFaktorVerJa = 1.2d;
+	private static double settingAuswertungFaktorVerNein = 0.8d;
+	private static double settingAuswertungFaktorDefNein = 0.0d;
 	
-	private static String settingAuswertungFaktorDefJa2 = "4.0";
-	private static String settingAuswertungFaktorDefNein2 = "0.64";
+	private static double settingAuswertungFaktorDefJa2 = 4.0d;
+	private static double settingAuswertungFaktorDefNein2 = 0.64d;
 	
 	public static void setWindowSizeScale(int scale) {
-		settingWindowSizeScale = "" + scale;
+		settingWindowSizeScale = scale;
 	}
 	public static int getWindowSizeScale() {
 		init();
-		return Integer.parseInt(settingWindowSizeScale);
+		return settingWindowSizeScale;
 	}
 	public static void setTheme(String themeId) {
 		settingTheme = themeId;
@@ -64,60 +63,78 @@ public class SettingsIO {
 		return theme;
 	}
 	public static void setLiveList(boolean bool) {
-		settingLiveList = "" + bool;
+		settingLiveList = bool;
 	}
 	public static boolean getLiveList() {
 		init();
-		if(settingLiveList.toLowerCase().equals("true")) {
-			return true;
-		}
-		return false;
+		return settingLiveList;
 	}
 	public static void setUpdateCheck(boolean bool) {
-		settingUpdateCheck = "" + bool;
+		settingUpdateCheck = bool;
 	}
 	public static boolean getUpdateCheck() {
 		init();
-		if(settingUpdateCheck.toLowerCase().equals("true")) {
-			return true;
-		}
-		return false;
+		return settingUpdateCheck;
 	}
 	public static void setAuswertungFaktorDefJa(String faktor) {
-		settingAuswertungFaktorDefJa = faktor;
+		try {
+			settingAuswertungFaktorDefJa = Double.parseDouble(faktor);
+		} catch(NumberFormatException ex) {
+			settingAuswertungFaktorDefJa = 0.0d;
+		}
 	}
 	public static double getAuswertungFaktorDefJa() {
-		return BasicUtility.strToDouble(settingAuswertungFaktorDefJa);
+		return settingAuswertungFaktorDefJa;
 	}
 	public static void setAuswertungFaktorVerJa(String faktor) {
-		settingAuswertungFaktorVerJa = faktor;
+		try {
+			settingAuswertungFaktorVerJa = Double.parseDouble(faktor);
+		} catch(NumberFormatException ex) {
+			settingAuswertungFaktorVerJa = 0.0d;
+		}
 	}
 	public static double getAuswertungFaktorVerJa() {
-		return BasicUtility.strToDouble(settingAuswertungFaktorVerJa);
+		return settingAuswertungFaktorVerJa;
 	}
 	public static void setAuswertungFaktorVerNein(String faktor) {
-		settingAuswertungFaktorVerNein = faktor;
+		try {
+			settingAuswertungFaktorVerNein = Double.parseDouble(faktor);
+		} catch(NumberFormatException ex) {
+			settingAuswertungFaktorVerNein = 0.0d;
+		}
 	}
 	public static double getAuswertungFaktorVerNein() {
-		return BasicUtility.strToDouble(settingAuswertungFaktorVerNein);
+		return settingAuswertungFaktorVerNein;
 	}
 	public static void setAuswertungFaktorDefNein(String faktor) {
-		settingAuswertungFaktorDefNein = faktor;
+		try {
+			settingAuswertungFaktorDefNein = Double.parseDouble(faktor);
+		} catch(NumberFormatException ex) {
+			settingAuswertungFaktorDefNein = 0.0d;
+		}
 	}
 	public static double getAuswertungFaktorDefNein() {
-		return BasicUtility.strToDouble(settingAuswertungFaktorDefNein);
+		return settingAuswertungFaktorDefNein;
 	}
 	public static void setAuswertungFaktorDefJa2(String faktor) {
-		settingAuswertungFaktorDefJa2 = faktor;
+		try {
+			settingAuswertungFaktorDefJa2 = Double.parseDouble(faktor);
+		} catch(NumberFormatException ex) {
+			settingAuswertungFaktorDefJa2 = 0.0d;
+		}
 	}
 	public static double getAuswertungFaktorDefJa2() {
-		return BasicUtility.strToDouble(settingAuswertungFaktorDefJa2);
+		return settingAuswertungFaktorDefJa2;
 	}
 	public static void setAuswertungFaktorDefNein2(String faktor) {
-		settingAuswertungFaktorDefNein2 = faktor;
+		try {
+			settingAuswertungFaktorDefNein2 = Double.parseDouble(faktor);
+		} catch(NumberFormatException ex) {
+			settingAuswertungFaktorDefNein2 = 0.0d;
+		}
 	}
 	public static double getAuswertungFaktorDefNein2() {
-		return BasicUtility.strToDouble(settingAuswertungFaktorDefNein2);
+		return settingAuswertungFaktorDefNein2;
 	}
 	
 	public static void saveSets() {
@@ -145,16 +162,16 @@ public class SettingsIO {
 			configVersion = configBase.getString("config_version");
 			
 			try {
-				settingWindowSizeScale = configBase.getString(CONFIG_JSON_WINDOWSIZESCALE);
+				settingWindowSizeScale = configBase.getInt(CONFIG_JSON_WINDOWSIZESCALE);
 				settingTheme = configBase.getString(CONFIG_JSON_THEME);
-				settingLiveList = configBase.getString(CONFIG_JSON_LIVELIST);
-				settingUpdateCheck = configBase.getString(CONFIG_JSON_UPDATE_CHECK);
-				settingAuswertungFaktorDefJa = configBase.getString(CONFIG_JSON_AUSWERTUNG_DEFJA);
-				settingAuswertungFaktorVerJa = configBase.getString(CONFIG_JSON_AUSWERTUNG_VERJA);
-				settingAuswertungFaktorVerNein = configBase.getString(CONFIG_JSON_AUSWERTUNG_VERNEIN);
-				settingAuswertungFaktorDefNein = configBase.getString(CONFIG_JSON_AUSWERTUNG_DEFNEIN);
-				settingAuswertungFaktorDefJa2 = configBase.getString(CONFIG_JSON_AUSWERTUNG_DEFJA2);
-				settingAuswertungFaktorDefNein2 = configBase.getString(CONFIG_JSON_AUSWERTUNG_DEFNEIN2);
+				settingLiveList = configBase.getBoolean(CONFIG_JSON_LIVELIST);
+				settingUpdateCheck = configBase.getBoolean(CONFIG_JSON_UPDATE_CHECK);
+				settingAuswertungFaktorDefJa = configBase.getDouble(CONFIG_JSON_AUSWERTUNG_DEFJA);
+				settingAuswertungFaktorVerJa = configBase.getDouble(CONFIG_JSON_AUSWERTUNG_VERJA);
+				settingAuswertungFaktorVerNein = configBase.getDouble(CONFIG_JSON_AUSWERTUNG_VERNEIN);
+				settingAuswertungFaktorDefNein = configBase.getDouble(CONFIG_JSON_AUSWERTUNG_DEFNEIN);
+				settingAuswertungFaktorDefJa2 = configBase.getDouble(CONFIG_JSON_AUSWERTUNG_DEFJA2);
+				settingAuswertungFaktorDefNein2 = configBase.getDouble(CONFIG_JSON_AUSWERTUNG_DEFNEIN2);
 				return true;
 			} catch(JSONException ex) {
 				if(configVersionCheck()) {
