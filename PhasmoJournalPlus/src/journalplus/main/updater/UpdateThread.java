@@ -15,7 +15,7 @@ public class UpdateThread extends Thread {
 			if(this.listener.isUpdateAvailable()) {
 				int result = JOptionPane.showConfirmDialog(null, "Eine neue Version ist verfügbar: " + this.listener.getVersion() + "\nHerunterladen?", "Update verfügbar", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				if(result == JOptionPane.YES_OPTION) {
-					BasicUtility.execute(this.listener.getVersionLink());
+					BasicUtility.openUrl(this.listener.getVersionLink());
 				}
 			} else {
 				return;
