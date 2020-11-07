@@ -4,9 +4,12 @@ import java.awt.Dimension;
 
 import journalplus.gui.BasicFrame;
 import journalplus.main.settings.Settings;
+import journalplus.main.updater.UpdateThread;
 
 public class MainFrame extends BasicFrame {
 	private static final long serialVersionUID = 1L;
+	
+	private Thread updateThread;
 	
 	public MainFrame() {
 		super(WINDOW_TITLE);
@@ -23,5 +26,8 @@ public class MainFrame extends BasicFrame {
         this.add(panel);
         
 		this.setVisible(true);
+		
+		this.updateThread = new UpdateThread();
+		this.updateThread.start();
 	}
 }
