@@ -36,6 +36,9 @@ public class EinstellungenPanel extends BasicPanel implements ChangeListener, Ac
 	private JCheckBox checkboxLiveList;
 	private JLabel labelLiveList;
 	
+	private JCheckBox checkboxUpdateCheck;
+	private JLabel labelUpdateCheck;
+	
 	private JTextField textboxAuswertungDefJa;
 	private JLabel labelAuswertungDefJa;
 	private JTextField textboxAuswertungVerJa;
@@ -69,6 +72,13 @@ public class EinstellungenPanel extends BasicPanel implements ChangeListener, Ac
 		}
 		this.checkboxLiveList.addChangeListener(this);
 		this.labelLiveList = new JLabel();
+		
+		this.checkboxUpdateCheck = new JCheckBox("Auf Updates prüfen");
+		if(SettingsIO.getUpdateCheck()) {
+			this.checkboxUpdateCheck.setSelected(true);
+		}
+		this.checkboxUpdateCheck.addChangeListener(this);
+		this.labelUpdateCheck = new JLabel();
 
 		this.textboxAuswertungDefJa = new JTextField(Double.toString(Settings.EINSTELLUNG_AUSWERTUNG_FAKTOR_DEFJA));
 		this.labelAuswertungDefJa = new JLabel(HTML_START + HTML_STRCOLOR(Double.toString(Settings.EINSTELLUNG_AUSWERTUNG_FAKTOR_DEFJA), ACCENT_COLOR) + HTML_END);
@@ -110,39 +120,45 @@ public class EinstellungenPanel extends BasicPanel implements ChangeListener, Ac
 		this.add(new JLabel(HTML_START + HTML_STRCOLOR("Geister-LiveAuswertung", PRIMARY_COLOR) + ":" + HTML_END), GridBagConstraintsUtility.build(0, yCoord, GBCPATTERN_SIDED));
 		this.add(this.labelLiveList, GridBagConstraintsUtility.build(1, yCoord, GBCPATTERN_SIDED));
 		this.add(this.checkboxLiveList, GridBagConstraintsUtility.build(2, yCoord, GBCPATTERN_SIDED_DETERMINANT));
+		
+		yCoord = 3;
+		//UpdateCheck OnOff
+		this.add(new JLabel(HTML_START + HTML_STRCOLOR("Update-Check", PRIMARY_COLOR) + ":" + HTML_END), GridBagConstraintsUtility.build(0, yCoord, GBCPATTERN_SIDED));
+		this.add(this.labelUpdateCheck, GridBagConstraintsUtility.build(1, yCoord, GBCPATTERN_SIDED));
+		this.add(this.checkboxUpdateCheck, GridBagConstraintsUtility.build(2, yCoord, GBCPATTERN_SIDED_DETERMINANT));
 
 		//6 Faktor-Felder
-		yCoord = 3;
+		yCoord = 4;
 		this.add(new JLabel(HTML_START + HTML_STRCOLOR("Auswertungsfaktor 'Definitiv Ja'", PRIMARY_COLOR) + ":" + HTML_END), GridBagConstraintsUtility.build(0, yCoord, GBCPATTERN_SIDED));
 		this.add(this.labelAuswertungDefJa, GridBagConstraintsUtility.build(1, yCoord, GBCPATTERN_SIDED));
 		this.add(this.textboxAuswertungDefJa, GridBagConstraintsUtility.build(2, yCoord, GBCPATTERN_SIDED_DETERMINANT));
-		yCoord = 4;
+		yCoord = 5;
 		this.add(new JLabel(HTML_START + HTML_STRCOLOR("Auswertungsfaktor 'Vermutlich Ja'", PRIMARY_COLOR) + ":" + HTML_END), GridBagConstraintsUtility.build(0, yCoord, GBCPATTERN_SIDED));
 		this.add(this.labelAuswertungVerJa, GridBagConstraintsUtility.build(1, yCoord, GBCPATTERN_SIDED));
 		this.add(this.textboxAuswertungVerJa, GridBagConstraintsUtility.build(2, yCoord, GBCPATTERN_SIDED_DETERMINANT));
-		yCoord = 5;
+		yCoord = 6;
 		this.add(new JLabel(HTML_START + HTML_STRCOLOR("Auswertungsfaktor 'Vermutlich Nein'", PRIMARY_COLOR) + ":" + HTML_END), GridBagConstraintsUtility.build(0, yCoord, GBCPATTERN_SIDED));
 		this.add(this.labelAuswertungVerNein, GridBagConstraintsUtility.build(1, yCoord, GBCPATTERN_SIDED));
 		this.add(this.textboxAuswertungVerNein, GridBagConstraintsUtility.build(2, yCoord, GBCPATTERN_SIDED_DETERMINANT));
-		yCoord = 6;
+		yCoord = 7;
 		this.add(new JLabel(HTML_START + HTML_STRCOLOR("Auswertungsfaktor 'Definitiv Nein'", PRIMARY_COLOR) + ":" + HTML_END), GridBagConstraintsUtility.build(0, yCoord, GBCPATTERN_SIDED));
 		this.add(this.labelAuswertungDefNein, GridBagConstraintsUtility.build(1, yCoord, GBCPATTERN_SIDED));
 		this.add(this.textboxAuswertungDefNein, GridBagConstraintsUtility.build(2, yCoord, GBCPATTERN_SIDED_DETERMINANT));
-		yCoord = 7;
+		yCoord = 8;
 		this.add(new JLabel(HTML_START + HTML_STRCOLOR("Auswertungsfaktor 'Definitiv Ja' (Beweise)", PRIMARY_COLOR) + ":" + HTML_END), GridBagConstraintsUtility.build(0, yCoord, GBCPATTERN_SIDED));
 		this.add(this.labelAuswertungDefJa2, GridBagConstraintsUtility.build(1, yCoord, GBCPATTERN_SIDED));
 		this.add(this.textboxAuswertungDefJa2, GridBagConstraintsUtility.build(2, yCoord, GBCPATTERN_SIDED_DETERMINANT));
-		yCoord = 8;
+		yCoord = 9;
 		this.add(new JLabel(HTML_START + HTML_STRCOLOR("Auswertungsfaktor 'Definitiv Nein' (nicht Beweise)", PRIMARY_COLOR) + ":" + HTML_END), GridBagConstraintsUtility.build(0, yCoord, GBCPATTERN_SIDED));
 		this.add(this.labelAuswertungDefNein2, GridBagConstraintsUtility.build(1, yCoord, GBCPATTERN_SIDED));
 		this.add(this.textboxAuswertungDefNein2, GridBagConstraintsUtility.build(2, yCoord, GBCPATTERN_SIDED_DETERMINANT));
 		
-		yCoord = 9;
+		yCoord = 10;
 		//Version
 		this.add(new JLabel(HTML_START + HTML_STRCOLOR("Version", PRIMARY_COLOR) + ":" + HTML_END), GridBagConstraintsUtility.build(0, yCoord, GBCPATTERN_SIDED_DETERMINANT));
 		this.add(new JLabel(HTML_START + HTML_STRCOLOR(Settings.EINSTELLUNG_VERSION_STRING, SECONDARY_COLOR) + HTML_END), GridBagConstraintsUtility.build(1, yCoord, GBCPATTERN_SIDED_DETERMINANT));
 
-		yCoord = 10;
+		yCoord = 11;
 		this.add(this.buttonApply, GridBagConstraintsUtility.build(0, yCoord, 2, 1, GridBagConstraints.HORIZONTAL, 0, 0, MARGIN_DEFAULT, GridBagConstraints.CENTER));
 		this.add(this.buttonReset, GridBagConstraintsUtility.build(2, yCoord, 1, 1, GridBagConstraints.HORIZONTAL, 0, 0, MARGIN_DEFAULT, GridBagConstraints.CENTER));
 		
@@ -155,7 +171,7 @@ public class EinstellungenPanel extends BasicPanel implements ChangeListener, Ac
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		if(e.getSource() == this.sliderWindowScale || e.getSource() == this.comboboxTheme || e.getSource() == this.checkboxLiveList) {
+		if(e.getSource() == this.sliderWindowScale || e.getSource() == this.comboboxTheme || e.getSource() == this.checkboxLiveList || e.getSource() == this.checkboxUpdateCheck) {
 			updateTexts();
 		}
 	}
@@ -163,11 +179,13 @@ public class EinstellungenPanel extends BasicPanel implements ChangeListener, Ac
 		this.labelWindowScale.setText(HTML_START + HTML_STRCOLOR(SettingsIO.getWindowSizeScale() + " ", ACCENT_COLOR) + HTML_STRCOLOR("(" + this.sliderWindowScale.getValue() + ")", SECONDARY_COLOR) + HTML_END);
 		this.labelTheme.setText(HTML_START + HTML_STRCOLOR(SettingsIO.getTheme().getThemeId(), ACCENT_COLOR) + HTML_END);
 		this.labelLiveList.setText(HTML_START + HTML_STRCOLOR((SettingsIO.getLiveList() ? "An" : "Aus") + " ", ACCENT_COLOR) + HTML_STRCOLOR("(" + (this.checkboxLiveList.isSelected() ? "An" : "Aus") + ")", SECONDARY_COLOR) + HTML_END);
+		this.labelUpdateCheck.setText(HTML_START + HTML_STRCOLOR((SettingsIO.getUpdateCheck() ? "An" : "Aus") + " ", ACCENT_COLOR) + HTML_STRCOLOR("(" + (this.checkboxUpdateCheck.isSelected() ? "An" : "Aus") + ")", SECONDARY_COLOR) + HTML_END);
 	}
 	private void saveData() {
 		SettingsIO.setWindowSizeScale(this.sliderWindowScale.getValue());
 		SettingsIO.setTheme(this.comboboxTheme.getSelectedItem().toString());
 		SettingsIO.setLiveList(this.checkboxLiveList.isSelected());
+		SettingsIO.setUpdateCheck(this.checkboxUpdateCheck.isSelected());
 		SettingsIO.setAuswertungFaktorDefJa(this.textboxAuswertungDefJa.getText());
 		SettingsIO.setAuswertungFaktorVerJa(this.textboxAuswertungVerJa.getText());
 		SettingsIO.setAuswertungFaktorVerNein(this.textboxAuswertungVerNein.getText());

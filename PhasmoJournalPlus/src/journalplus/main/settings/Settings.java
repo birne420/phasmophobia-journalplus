@@ -16,6 +16,7 @@ public class Settings {
 	public static int EINSTELLUNG_FENSTER_Y = (int) (scalingFactor * Math.pow(3, 2));
 
 	public static boolean EINSTELLUNG_GEISTERLISTE_LIVE = SettingsIO.getLiveList();
+	public static boolean EINSTELLUNG_UPDATE_CHECK = SettingsIO.getUpdateCheck();
 	
 	public static ActualTheme EINSTELLUNG_THEME = SettingsIO.getTheme();
 	public static String EINSTELLUNG_THEME_POSITIVE = EINSTELLUNG_THEME.getEinstellungThemePositive();

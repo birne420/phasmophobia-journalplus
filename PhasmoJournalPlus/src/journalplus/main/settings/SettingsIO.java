@@ -31,6 +31,7 @@ public class SettingsIO {
 	private static final String CONFIG_XML_WINDOWSIZESCALE = "window_scaling";
 	private static final String CONFIG_XML_THEME = "active_theme";
 	private static final String CONFIG_XML_LIVELIST = "livelist_enabled";
+	private static final String CONFIG_XML_UPDATE_CHECK = "update_check";
 	private static final String CONFIG_XML_AUSWERTUNG_DEFJA = "evaluation_def_yes";
 	private static final String CONFIG_XML_AUSWERTUNG_VERJA = "evaluation_prob_yes";
 	private static final String CONFIG_XML_AUSWERTUNG_VERNEIN = "evaluation_prob_no";
@@ -41,6 +42,7 @@ public class SettingsIO {
 	private static String settingWindowSizeScale = "64";
 	private static String settingTheme = "default";
 	private static String settingLiveList = "true";
+	private static String settingUpdateCheck = "true";
 	private static String configVersion = null;
 	
 	private static String settingAuswertungFaktorDefJa = "2.0";
@@ -78,6 +80,16 @@ public class SettingsIO {
 	public static boolean getLiveList() {
 		init();
 		if(settingLiveList.toLowerCase().equals("true")) {
+			return true;
+		}
+		return false;
+	}
+	public static void setUpdateCheck(boolean bool) {
+		settingUpdateCheck = "" + bool;
+	}
+	public static boolean getUpdateCheck() {
+		init();
+		if(settingUpdateCheck.toLowerCase().equals("true")) {
 			return true;
 		}
 		return false;
@@ -131,7 +143,6 @@ public class SettingsIO {
 		return loadConfig();
 	}
 	
-	//TODO: ConfigVersionCheck
 	public static boolean configVersionCheck() {
 		return configVersion.equalsIgnoreCase(Settings.EINSTELLUNG_VERSION_STRING);
 	}
@@ -164,6 +175,7 @@ public class SettingsIO {
 					settingWindowSizeScale = element.getElementsByTagName(CONFIG_XML_WINDOWSIZESCALE).item(0).getTextContent();
 					settingTheme = element.getElementsByTagName(CONFIG_XML_THEME).item(0).getTextContent();
 					settingLiveList = element.getElementsByTagName(CONFIG_XML_LIVELIST).item(0).getTextContent();
+					settingUpdateCheck = element.getElementsByTagName(CONFIG_XML_UPDATE_CHECK).item(0).getTextContent();
 					settingAuswertungFaktorDefJa = element.getElementsByTagName(CONFIG_XML_AUSWERTUNG_DEFJA).item(0).getTextContent();
 					settingAuswertungFaktorVerJa = element.getElementsByTagName(CONFIG_XML_AUSWERTUNG_VERJA).item(0).getTextContent();
 					settingAuswertungFaktorVerNein = element.getElementsByTagName(CONFIG_XML_AUSWERTUNG_VERNEIN).item(0).getTextContent();
@@ -209,6 +221,9 @@ public class SettingsIO {
 		Element elementConfigLiveList = document.createElement(CONFIG_XML_LIVELIST);
 		elementConfigLiveList.setTextContent(settingLiveList);
 		
+		Element elementConfigUpdateCheck = document.createElement(CONFIG_XML_UPDATE_CHECK);
+		elementConfigUpdateCheck.setTextContent(settingUpdateCheck);
+		
 		Element elementConfigAuswertungDefJa = document.createElement(CONFIG_XML_AUSWERTUNG_DEFJA);
 		elementConfigAuswertungDefJa.setTextContent(settingAuswertungFaktorDefJa);
 		
@@ -231,6 +246,7 @@ public class SettingsIO {
 		elementConfig.appendChild(elementConfigWindowSizeScale);
 		elementConfig.appendChild(elementConfigTheme);
 		elementConfig.appendChild(elementConfigLiveList);
+		elementConfig.appendChild(elementConfigUpdateCheck);
 		elementConfig.appendChild(elementConfigAuswertungDefJa);
 		elementConfig.appendChild(elementConfigAuswertungVerJa);
 		elementConfig.appendChild(elementConfigAuswertungVerNein);
