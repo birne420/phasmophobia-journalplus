@@ -10,6 +10,7 @@ import journalplus.gui.IThemeInfluenced;
 import journalplus.journal.*;
 import journalplus.journal.auswertung.*;
 import journalplus.journal.vermutung.Vermutung;
+import journalplus.main.Logger;
 import journalplus.utility.BasicUtility;
 import journalplus.utility.GridBagConstraintsUtility;
 
@@ -59,6 +60,7 @@ public class AuswertungPanel extends BasicPanel {
 	}
 	
 	public AuswertungPanel() {
+		Logger.log("auswertung.gui.panel", "init");
 		this.setLayout(new GridBagLayout());
 		
 		this.rankingListe = new Ranking().get();
@@ -94,8 +96,10 @@ public class AuswertungPanel extends BasicPanel {
 		if(infoCountTotal != 0) {
 			if(fuehrend > 1) {
 				this.add(new JLabel(HTML_START + "Der Geist konnte nicht eindeutig ermittelt werden:" + HTML_END), GridBagConstraintsUtility.build(0, 0, 4, 1, GridBagConstraints.HORIZONTAL, 1, 1, MARGIN_SIDED));
+				Logger.log("auswertung.gui.panel", "ghost ranking: " + "<no result>");
 			} else {
 				this.add(new JLabel(HTML_START + "Der Geist scheint ein " + HTML_STRCOLOR(maxGeist.toString(), NEGATIVE_COLOR) + " " + HTML_STRCOLOR("(" + maxPoints + " Punkte, EdkW " + BasicUtility.runden(eindeutigkeitswert * 100, 2) + ")", SECONDARY_COLOR) + " zu sein. Es wurden " + HTML_STRCOLOR(infoCountTotal + " Hinweise", PRIMARY_COLOR) + " berücksichtigt." + HTML_END), GridBagConstraintsUtility.build(0, 0, 4, 1, GridBagConstraints.HORIZONTAL, 1, 1, MARGIN_SIDED));
+				Logger.log("auswertung.gui.panel", "ghost ranking: " + maxGeist.toString());
 			}
 		} else {
 			this.add(new JLabel("Ohne weitere Eingaben kann keine Auswertung erfolgen."), GridBagConstraintsUtility.build(0, 0, 4, 1, GridBagConstraints.HORIZONTAL, 1, 1, MARGIN_SIDED));

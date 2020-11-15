@@ -24,6 +24,7 @@ import journalplus.journal.auswertung.GeistEvaluator;
 import journalplus.journal.auswertung.Ranking;
 import journalplus.journal.vermutung.IVermutung;
 import journalplus.journal.vermutung.Vermutung;
+import journalplus.main.Logger;
 import journalplus.main.settings.Settings;
 import journalplus.utility.ColorMixingUtility;
 import journalplus.utility.GridBagConstraintsPattern;
@@ -63,6 +64,7 @@ public class MainPanel extends BasicPanel implements ActionListener, ListSelecti
 	
 	//Konstruktor
 	public MainPanel() {
+		Logger.log("main.gui.panel", "init");
 		this.setLayout(new GridBagLayout());
 		
 		this.generalMargin = new Insets(5, 5, 5, 5);
@@ -205,6 +207,7 @@ public class MainPanel extends BasicPanel implements ActionListener, ListSelecti
 		return HTML_START + HTML_STRCOLOR("[", SECONDARY_COLOR) + HTML_STRCOLOR(vermutung.toString(), color) + HTML_STRCOLOR("]", SECONDARY_COLOR) + " " + text + HTML_END;
 	}
 	private void updateEigenschaftenList() {
+		Logger.log("main.gui.panel", "update eigenschaften-list");
 		int index = this.listEigenschaften.getSelectedIndex();
 		this.listEigenschaftenModel.clear();
 		if(this.guiState == GUIState.BEWEISE) {
@@ -230,6 +233,7 @@ public class MainPanel extends BasicPanel implements ActionListener, ListSelecti
 	}
 	//List-Utility
 	private void setVermutung(Vermutung vermutung) {
+		Logger.log("main.gui.panel", "setze vermuting " + vermutung.toString());
 		int selectedIndex = listEigenschaften.getSelectedIndex();
 		if(selectedIndex != -1) {
 			IVermutung v = getVermutungAt(selectedIndex);
@@ -260,6 +264,7 @@ public class MainPanel extends BasicPanel implements ActionListener, ListSelecti
 	}
 	//Auswerten
 	private void updateGeisterList() {
+		Logger.log("main.gui.panel", "update geister-list");
 		this.listGeisterModel.clear();
 		double maxPoints = new GeistEvaluator((Geist) new Ranking().get()[0]).get();
 		for(Geist geist : Geist.values()) {
@@ -336,6 +341,7 @@ public class MainPanel extends BasicPanel implements ActionListener, ListSelecti
 	public void mouseExited(MouseEvent e) {}
 
 	public void reset() {
+		Logger.log("main.gui.panel", "reset gui");
 		this.buttonBeweise.setEnabled(true);
 		this.buttonStaerken.setEnabled(true);
 		this.buttonSchwaechen.setEnabled(true);

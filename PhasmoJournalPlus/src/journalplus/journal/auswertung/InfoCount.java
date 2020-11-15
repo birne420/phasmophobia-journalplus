@@ -2,6 +2,7 @@ package journalplus.journal.auswertung;
 
 import journalplus.journal.*;
 import journalplus.journal.vermutung.Vermutung;
+import journalplus.main.Logger;
 
 public class InfoCount {
 	private int info;
@@ -16,6 +17,7 @@ public class InfoCount {
 	}
 	
 	public int get() {
+		Logger.log("auswertung.count", this.info + " infos counted");
 		return this.info;
 	}
 }

@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import journalplus.gui.themes.ActualTheme;
 import journalplus.gui.themes.ThemeLoader;
+import journalplus.main.Logger;
 
 public class SettingsIO {
 	public static final String CONFIG_FILE = System.getProperty("java.io.tmpdir") + "journal_plus_config.json";
@@ -42,6 +43,7 @@ public class SettingsIO {
 	private static double settingAuswertungFaktorDefNein2 = 0.64d;
 	
 	public static void setWindowSizeScale(int scale) {
+		Logger.log("main.settings", "set window size scale to " + scale);
 		settingWindowSizeScale = scale;
 	}
 	public static int getWindowSizeScale() {
@@ -49,6 +51,7 @@ public class SettingsIO {
 		return settingWindowSizeScale;
 	}
 	public static void setTheme(String themeId) {
+		Logger.log("main.settings", "set theme to " + themeId);
 		settingTheme = themeId;
 	}
 	public static ActualTheme getTheme() {
@@ -57,12 +60,14 @@ public class SettingsIO {
 		
 		ThemeLoader loader = new ThemeLoader();
 		if(!loader.loadTheme(themeId)) {
+			Logger.log("main.settings.themes", "set theme to default, could not load theme: " + themeId);
 			loader.loadTheme("default");
 		}
 		ActualTheme theme = loader.get();
 		return theme;
 	}
 	public static void setLiveList(boolean bool) {
+		Logger.log("main.settings", "set live list to " + bool);
 		settingLiveList = bool;
 	}
 	public static boolean getLiveList() {
@@ -70,6 +75,7 @@ public class SettingsIO {
 		return settingLiveList;
 	}
 	public static void setUpdateCheck(boolean bool) {
+		Logger.log("main.settings", "set update check to " + bool);
 		settingUpdateCheck = bool;
 	}
 	public static boolean getUpdateCheck() {
@@ -78,8 +84,10 @@ public class SettingsIO {
 	}
 	public static void setAuswertungFaktorDefJa(String faktor) {
 		try {
+			Logger.log("main.settings", "set faktor defja to " + faktor);
 			settingAuswertungFaktorDefJa = Double.parseDouble(faktor);
 		} catch(NumberFormatException ex) {
+			Logger.log("error", "could not parse " + faktor + " to double, set to 0.0d");
 			settingAuswertungFaktorDefJa = 0.0d;
 		}
 	}
@@ -88,8 +96,10 @@ public class SettingsIO {
 	}
 	public static void setAuswertungFaktorVerJa(String faktor) {
 		try {
+			Logger.log("main.settings", "set faktor verja to " + faktor);
 			settingAuswertungFaktorVerJa = Double.parseDouble(faktor);
 		} catch(NumberFormatException ex) {
+			Logger.log("error", "could not parse " + faktor + " to double, set to 0.0d");
 			settingAuswertungFaktorVerJa = 0.0d;
 		}
 	}
@@ -98,8 +108,10 @@ public class SettingsIO {
 	}
 	public static void setAuswertungFaktorVerNein(String faktor) {
 		try {
+			Logger.log("main.settings", "set faktor vernein to " + faktor);
 			settingAuswertungFaktorVerNein = Double.parseDouble(faktor);
 		} catch(NumberFormatException ex) {
+			Logger.log("error", "could not parse " + faktor + " to double, set to 0.0d");
 			settingAuswertungFaktorVerNein = 0.0d;
 		}
 	}
@@ -108,8 +120,10 @@ public class SettingsIO {
 	}
 	public static void setAuswertungFaktorDefNein(String faktor) {
 		try {
+			Logger.log("main.settings", "set faktor defnein to " + faktor);
 			settingAuswertungFaktorDefNein = Double.parseDouble(faktor);
 		} catch(NumberFormatException ex) {
+			Logger.log("error", "could not parse " + faktor + " to double, set to 0.0d");
 			settingAuswertungFaktorDefNein = 0.0d;
 		}
 	}
@@ -118,8 +132,10 @@ public class SettingsIO {
 	}
 	public static void setAuswertungFaktorDefJa2(String faktor) {
 		try {
+			Logger.log("main.settings", "set faktor defja2 to " + faktor);
 			settingAuswertungFaktorDefJa2 = Double.parseDouble(faktor);
 		} catch(NumberFormatException ex) {
+			Logger.log("error", "could not parse " + faktor + " to double, set to 0.0d");
 			settingAuswertungFaktorDefJa2 = 0.0d;
 		}
 	}
@@ -128,8 +144,10 @@ public class SettingsIO {
 	}
 	public static void setAuswertungFaktorDefNein2(String faktor) {
 		try {
+			Logger.log("main.settings", "set faktor defnein2 to " + faktor);
 			settingAuswertungFaktorDefNein2 = Double.parseDouble(faktor);
 		} catch(NumberFormatException ex) {
+			Logger.log("error", "could not parse " + faktor + " to double, set to 0.0d");
 			settingAuswertungFaktorDefNein2 = 0.0d;
 		}
 	}
@@ -143,6 +161,7 @@ public class SettingsIO {
 	public static boolean init() {
 		File file = new File(CONFIG_FILE);
 		if(!(file.exists() && !file.isDirectory())) {
+			Logger.log("main.settings", "writing new default config file");
 			saveConfig();
 		}
 
@@ -155,13 +174,17 @@ public class SettingsIO {
 
 	private static boolean loadConfig() {
 		try {
+			Logger.log("main.settings.config", "loading config file " + CONFIG_FILE);
 			String jsonString = Files.readString(Paths.get(CONFIG_FILE));
-			
+
+			Logger.log("main.settings.config", "parsing json object");
 			JSONObject jsonObject = new JSONObject(jsonString);
 			JSONObject configBase = jsonObject.getJSONObject(CONFIG_JSON_BASE);
 			configVersion = configBase.getString("config_version");
+			Logger.log("main.settings.config", "config version is " + configVersion);
 			
 			try {
+				Logger.log("main.settings.config", "reading values...");
 				settingWindowSizeScale = configBase.getInt(CONFIG_JSON_WINDOWSIZESCALE);
 				settingTheme = configBase.getString(CONFIG_JSON_THEME);
 				settingLiveList = configBase.getBoolean(CONFIG_JSON_LIVELIST);
@@ -172,23 +195,29 @@ public class SettingsIO {
 				settingAuswertungFaktorDefNein = configBase.getDouble(CONFIG_JSON_AUSWERTUNG_DEFNEIN);
 				settingAuswertungFaktorDefJa2 = configBase.getDouble(CONFIG_JSON_AUSWERTUNG_DEFJA2);
 				settingAuswertungFaktorDefNein2 = configBase.getDouble(CONFIG_JSON_AUSWERTUNG_DEFNEIN2);
+				Logger.log("main.settings.config", "reading successful");
 				return true;
 			} catch(JSONException ex) {
+				Logger.log("error", ex.getMessage());
+				ex.printStackTrace();
 				if(configVersionCheck()) {
 					JOptionPane.showMessageDialog(null, "Einstellungen wurden zurückgesetzt, da die Konfigurationsdatei beschädigt war.", "Einstellungen", JOptionPane.INFORMATION_MESSAGE);
 				} else {
 					JOptionPane.showMessageDialog(null, "Einstellungen wurden zurückgesetzt, da sich das Konfigurationsformat in der neuen Version geändert hat.", "Einstellungen", JOptionPane.INFORMATION_MESSAGE);
 				}
+				Logger.log("main.settings.config", "deleting config file");
 				deleteConfig();
 				init();
 				return false;
 			}
 		} catch (IOException e) {
+			Logger.log("error", e.getMessage());
 			e.printStackTrace();
 			return false;
 		}
 	}
 	private static boolean saveConfig() {
+		Logger.log("main.settings.config", "building json object...");
 		JSONObject configObject = new JSONObject();
 		
 		JSONObject configBase = new JSONObject();
@@ -208,9 +237,12 @@ public class SettingsIO {
 		configObject.put(CONFIG_JSON_BASE, configBase);
 		
 		try {
+			Logger.log("main.settings.config", "writing data...");
 			Files.writeString(Paths.get(CONFIG_FILE), configObject.toString(), StandardCharsets.UTF_8);
+			Logger.log("main.settings.config", "config file created");
 			return true;
 		} catch (IOException e) {
+			Logger.log("error", e.getMessage());
 			e.printStackTrace();
 			return false;
 		}

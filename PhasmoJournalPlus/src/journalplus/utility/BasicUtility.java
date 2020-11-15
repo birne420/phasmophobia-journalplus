@@ -8,6 +8,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import journalplus.gui.main.MainFrame;
+import journalplus.main.Logger;
 
 public class BasicUtility {
 	public static double runden(final double wert, final int n) {
@@ -16,11 +17,14 @@ public class BasicUtility {
 	public static double strToDouble(String string) {
 		try {
 			return Double.parseDouble(string);
-		} catch(NumberFormatException numFormatExc) {
+		} catch(Exception ex) {
+			Logger.log("error", ex.getMessage());
+			ex.printStackTrace();
 			return 1.0d;
 		}
 	}
 	public static boolean restartProcess() {
+		Logger.log("utility.restart_process", "restarting process...");
 		String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
 		File currentJar;
 		try {
@@ -34,14 +38,18 @@ public class BasicUtility {
 			command.add(currentJar.getPath());
 			ProcessBuilder builder = new ProcessBuilder(command);
 			try {
+				Logger.log("utility.restart_process", "executing " + javaBin + " -jar " + currentJar.getPath());
 				builder.start();
+				Logger.log("utility.restart_process", "terminating...");
 				System.exit(0);
 				return true;
 			} catch (IOException e) {
+				Logger.log("error", e.getMessage());
 				e.printStackTrace();
 				return false;
 			}
 		} catch (URISyntaxException e) {
+			Logger.log("error", e.getMessage());
 			e.printStackTrace();
 			return false;
 		}
@@ -57,8 +65,10 @@ public class BasicUtility {
 					desktop.browse(uri);
 					return true;
 				} catch (URISyntaxException e) {
+					Logger.log("error", e.getMessage());
 					e.printStackTrace();
 				} catch (IOException e) {
+					Logger.log("error", e.getMessage());
 					e.printStackTrace();
 				}
 			}

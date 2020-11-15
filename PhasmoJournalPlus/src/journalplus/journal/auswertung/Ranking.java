@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import journalplus.journal.Geist;
+import journalplus.main.Logger;
 
 public class Ranking {
 	private List<Geist> arrayGeist;
@@ -24,6 +25,8 @@ public class Ranking {
 		while(this.arrayGeist.size() > 0) {
 			this.arrayGeistSorted.add(getNextGeistFinished(getNextGeist()));
 		}
+		
+		Logger.log("auswertung.ranking", "created ghost ranking");
 	}
 	
 	public Object[] get() {

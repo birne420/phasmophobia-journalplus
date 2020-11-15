@@ -18,6 +18,7 @@ import javax.swing.event.ChangeListener;
 
 import journalplus.gui.BasicPanel;
 import journalplus.gui.IThemeInfluenced;
+import journalplus.main.Logger;
 import journalplus.main.settings.Settings;
 import journalplus.main.settings.SettingsIO;
 import journalplus.utility.BasicUtility;
@@ -57,6 +58,7 @@ public class EinstellungenPanel extends BasicPanel implements ChangeListener, Ac
 	private JButton buttonApply;
 	
 	public EinstellungenPanel(JFrame frame) {
+		Logger.log("settings.gui.panel", "init");
 		this.setLayout(new GridBagLayout());
 		
 		this.sliderWindowScale = new JSlider(50, 120, SettingsIO.getWindowSizeScale());
@@ -183,6 +185,7 @@ public class EinstellungenPanel extends BasicPanel implements ChangeListener, Ac
 		this.labelUpdateCheck.setText(HTML_START + HTML_STRCOLOR((SettingsIO.getUpdateCheck() ? "An" : "Aus") + " ", ACCENT_COLOR) + HTML_STRCOLOR("(" + (this.checkboxUpdateCheck.isSelected() ? "An" : "Aus") + ")", SECONDARY_COLOR) + HTML_END);
 	}
 	private void saveData() {
+		Logger.log("settings.gui.panel", "saving settings...");
 		SettingsIO.setWindowSizeScale(this.sliderWindowScale.getValue());
 		SettingsIO.setTheme(this.comboboxTheme.getSelectedItem().toString());
 		SettingsIO.setLiveList(this.checkboxLiveList.isSelected());

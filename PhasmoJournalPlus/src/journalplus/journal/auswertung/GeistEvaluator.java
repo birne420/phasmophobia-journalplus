@@ -1,6 +1,7 @@
 package journalplus.journal.auswertung;
 
 import journalplus.journal.*;
+import journalplus.main.Logger;
 import journalplus.main.settings.Settings;
 import journalplus.utility.BasicUtility;
 
@@ -19,6 +20,8 @@ public class GeistEvaluator {
 	private static final double faktorDN2 = Settings.EINSTELLUNG_AUSWERTUNG_FAKTOR_DEFNEIN2;
 	
 	public GeistEvaluator(Geist geist) {
+		Logger.log("auswertung", "werte geist " + geist.toString() + " aus...");
+		
 		Beweis[] geistBeweise = geist.getBeweise();
 		Staerke geistStaerke = geist.getStaerke();
 		Schwaeche geistSchwaeche = geist.getSchwaeche();
@@ -91,6 +94,8 @@ public class GeistEvaluator {
 				case NICHTS: default: break;
 			}
 		}
+		
+		Logger.log("auswertung", "combined " + beweisFaktor + "/" + staerkeFaktor + "/" + schwaecheFaktor + "/" + detailFaktor + " to " + (beweisFaktor * staerkeFaktor * schwaecheFaktor * detailFaktor));
 	}
 	
 	public double get() { return BasicUtility.runden(beweisFaktor * staerkeFaktor * schwaecheFaktor * detailFaktor, 2); }

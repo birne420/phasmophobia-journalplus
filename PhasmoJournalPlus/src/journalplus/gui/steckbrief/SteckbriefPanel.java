@@ -13,6 +13,7 @@ import journalplus.journal.Schwaeche;
 import journalplus.journal.Staerke;
 import journalplus.journal.auswertung.GeistEvaluator;
 import journalplus.journal.vermutung.Vermutung;
+import journalplus.main.Logger;
 import journalplus.utility.GridBagConstraintsUtility;
 
 public class SteckbriefPanel extends BasicPanel {
@@ -24,6 +25,7 @@ public class SteckbriefPanel extends BasicPanel {
 	private Detaileigenschaft[] geistDetails;
 
 	public SteckbriefPanel(Geist geist) {
+		Logger.log("steckbrief.gui.panel", "init");
 		this.geistBeweise = geist.getBeweise();
 		this.geistStaerke = geist.getStaerke();
 		this.geistSchwaeche = geist.getSchwaeche();

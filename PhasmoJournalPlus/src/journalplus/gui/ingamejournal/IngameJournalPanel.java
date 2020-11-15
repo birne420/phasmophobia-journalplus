@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import journalplus.gui.BasicPanel;
 import journalplus.gui.IThemeInfluenced;
+import journalplus.main.Logger;
 
 public class IngameJournalPanel extends BasicPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
@@ -27,6 +28,7 @@ public class IngameJournalPanel extends BasicPanel implements ActionListener {
 	private int page;
 	
 	public IngameJournalPanel() {
+		Logger.log("ingamejournal.gui.panel", "init");
 		this.setLayout(new BorderLayout());
 		
 		this.page = 1;
