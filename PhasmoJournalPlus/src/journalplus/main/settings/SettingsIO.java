@@ -1,11 +1,9 @@
 package journalplus.main.settings;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
 import javax.swing.JOptionPane;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,6 +39,8 @@ public class SettingsIO {
 	
 	private static double settingAuswertungFaktorDefJa2 = 4.0d;
 	private static double settingAuswertungFaktorDefNein2 = 0.64d;
+	
+	private static File FileConfigObject;
 	
 	public static void setWindowSizeScale(int scale) {
 		Logger.log("main.settings", "set window size scale to " + scale);
@@ -175,10 +175,25 @@ public class SettingsIO {
 	private static boolean loadConfig() {
 		try {
 			Logger.log("main.settings.config", "loading config file " + CONFIG_FILE);
-			String jsonString = Files.readString(Paths.get(CONFIG_FILE));
-
+			
+			FileConfigObject = new File(CONFIG_FILE);
+			if(!FileConfigObject.exists()) {
+				Logger.log("main.settings.config", "file " + CONFIG_FILE + " does not exist");
+				init();
+				return false;
+			}
+			
+			FileConfigObject.createNewFile();
+			FileReader configReader = new FileReader(FileConfigObject);
+			StringBuilder jsonStringBuilder = new StringBuilder();
+			int i;
+			while((i = configReader.read()) != -1) {
+				jsonStringBuilder.append((char)i);
+			}
+			configReader.close();
+			
 			Logger.log("main.settings.config", "parsing json object");
-			JSONObject jsonObject = new JSONObject(jsonString);
+			JSONObject jsonObject = new JSONObject(jsonStringBuilder.toString());
 			JSONObject configBase = jsonObject.getJSONObject(CONFIG_JSON_BASE);
 			configVersion = configBase.getString("config_version");
 			Logger.log("main.settings.config", "config version is " + configVersion);
@@ -238,7 +253,15 @@ public class SettingsIO {
 		
 		try {
 			Logger.log("main.settings.config", "writing data...");
-			Files.writeString(Paths.get(CONFIG_FILE), configObject.toString(), StandardCharsets.UTF_8);
+			
+			FileConfigObject = new File(CONFIG_FILE);
+			if(FileConfigObject.exists()) deleteConfig();
+			FileConfigObject.createNewFile();
+			FileWriter configWriter = new FileWriter(FileConfigObject);
+			configWriter.write(configObject.toString());
+			configWriter.flush();
+			configWriter.close();
+			
 			Logger.log("main.settings.config", "config file created");
 			return true;
 		} catch (IOException e) {

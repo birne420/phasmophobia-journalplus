@@ -5,7 +5,7 @@ import java.awt.Color;
 import journalplus.gui.themes.ActualTheme;
 
 public class Settings {
-	public static final String EINSTELLUNG_VERSION_STRING = "1.73-dev";
+	public static final String EINSTELLUNG_VERSION_STRING = "1.74-fixed";
 	
 	public static final String EINSTELLUNG_TITEL = "Phasmophobia - JournalPlus ";
 	public static final String EINSTELLUNG_TITEL_SEPARATOR = " / ";

@@ -1,3 +1,3 @@
 @echo off
-java -jar JournalPlus_1.73-dev.jar
+java -jar JournalPlus_1.74-fixed.jar
 pause
