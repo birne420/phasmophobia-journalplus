@@ -17,7 +17,7 @@ public class Logger {
 				pStream = new PrintStream(new File("JournalPlus.log"));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
-				JOptionPane.showMessageDialog(null, "Debug-Logging gescheitert: " + e.getMessage(), "Error", 0);
+				JOptionPane.showMessageDialog(null, "Debug-Logging gescheitert: " + e.getStackTrace(), "Error", 0);
 			}
 			System.setOut(pStream);
 			log("LOGGING", "Set to file.");

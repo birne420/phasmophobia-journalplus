@@ -1,0 +1,130 @@
+[2020-11-15 21:44:36/LOGGING]: Set to file.
+[2020-11-15 21:44:37/MAIN]: awaiking...
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: loading config file C:\Users\bern_\AppData\Local\Temp\journal_plus_config.json
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: parsing json object
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: config version is 1.71
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: reading values...
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: reading successful
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: loading config file C:\Users\bern_\AppData\Local\Temp\journal_plus_config.json
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: parsing json object
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: config version is 1.71
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: reading values...
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: reading successful
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: loading config file C:\Users\bern_\AppData\Local\Temp\journal_plus_config.json
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: parsing json object
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: config version is 1.71
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: reading values...
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: reading successful
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: loading config file C:\Users\bern_\AppData\Local\Temp\journal_plus_config.json
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: parsing json object
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: config version is 1.71
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: reading values...
+[2020-11-15 21:44:37/MAIN.SETTINGS.CONFIG]: reading successful
+[2020-11-15 21:44:37/THEMELOADER]: loading theme /journalplus/assets/themes/default.json
+[2020-11-15 21:44:37/THEMELOADER]: reading file
+[2020-11-15 21:44:37/THEMELOADER]: parsing json object
+[2020-11-15 21:44:37/THEMELOADER]: theme loaded successfully
+[2020-11-15 21:44:37/MAIN.GUI]: set window size to 1024x576
+[2020-11-15 21:44:37/MAIN.GUI]: set window position to centered
+[2020-11-15 21:44:37/MAIN.GUI]: set default close operation to EXIT_ON_CLOSE
+[2020-11-15 21:44:37/MAIN.GUI]: set minimum size to 1024x576
+[2020-11-15 21:44:37/MAIN.GUI.PANEL]: init
+[2020-11-15 21:44:37/MAIN.GUI.PANEL]: update geister-list
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Spirit aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Gespenst aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Phantom aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Poltergeist aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Banshee aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Dschinn aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Mare aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Revenant aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Shade aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Dämon aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Yurei aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Oni aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/AUSWERTUNG.RANKING]: created ghost ranking
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Oni aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Spirit aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff9e00 to 255/158/0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff3700 to 255/55/0
+[2020-11-15 21:44:37/UTILITY.COLOR_MIXING]: mixed 255/158/0 + 255/55/0 to #ff9e00
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Gespenst aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff9e00 to 255/158/0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff3700 to 255/55/0
+[2020-11-15 21:44:37/UTILITY.COLOR_MIXING]: mixed 255/158/0 + 255/55/0 to #ff9e00
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Phantom aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff9e00 to 255/158/0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff3700 to 255/55/0
+[2020-11-15 21:44:37/UTILITY.COLOR_MIXING]: mixed 255/158/0 + 255/55/0 to #ff9e00
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Poltergeist aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff9e00 to 255/158/0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff3700 to 255/55/0
+[2020-11-15 21:44:37/UTILITY.COLOR_MIXING]: mixed 255/158/0 + 255/55/0 to #ff9e00
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Banshee aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff9e00 to 255/158/0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff3700 to 255/55/0
+[2020-11-15 21:44:37/UTILITY.COLOR_MIXING]: mixed 255/158/0 + 255/55/0 to #ff9e00
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Dschinn aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff9e00 to 255/158/0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff3700 to 255/55/0
+[2020-11-15 21:44:37/UTILITY.COLOR_MIXING]: mixed 255/158/0 + 255/55/0 to #ff9e00
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Mare aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff9e00 to 255/158/0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff3700 to 255/55/0
+[2020-11-15 21:44:37/UTILITY.COLOR_MIXING]: mixed 255/158/0 + 255/55/0 to #ff9e00
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Revenant aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff9e00 to 255/158/0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff3700 to 255/55/0
+[2020-11-15 21:44:37/UTILITY.COLOR_MIXING]: mixed 255/158/0 + 255/55/0 to #ff9e00
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Shade aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff9e00 to 255/158/0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff3700 to 255/55/0
+[2020-11-15 21:44:37/UTILITY.COLOR_MIXING]: mixed 255/158/0 + 255/55/0 to #ff9e00
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Dämon aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff9e00 to 255/158/0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff3700 to 255/55/0
+[2020-11-15 21:44:37/UTILITY.COLOR_MIXING]: mixed 255/158/0 + 255/55/0 to #ff9e00
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Yurei aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff9e00 to 255/158/0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff3700 to 255/55/0
+[2020-11-15 21:44:37/UTILITY.COLOR_MIXING]: mixed 255/158/0 + 255/55/0 to #ff9e00
+[2020-11-15 21:44:37/AUSWERTUNG]: werte geist Oni aus...
+[2020-11-15 21:44:37/AUSWERTUNG]: combined 1.0/1.0/1.0/1.0 to 1.0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff9e00 to 255/158/0
+[2020-11-15 21:44:37/UTILITY.HT_COLOR]: converted #ff3700 to 255/55/0
+[2020-11-15 21:44:37/UTILITY.COLOR_MIXING]: mixed 255/158/0 + 255/55/0 to #ff9e00
+[2020-11-15 21:44:37/MAIN.GUI]: applying menu bar to panel
+[2020-11-15 21:44:37/MAIN.GUI]: open up gui
+[2020-11-15 21:44:37/MAIN.UPDATER]: initialize auto updater
+[2020-11-15 21:44:37/MAIN.UPDATER]: initialize update listener
+[2020-11-15 21:44:37/MAIN.UPDATER]: looking for update meta: https://raw.githubusercontent.com/birne420/phasmophobia-journalplus/master/PhasmoJournalPlus/versions/update.json
+[2020-11-15 21:44:37/MAIN.UPDATER.SEARCH]: retrieving data...
+[2020-11-15 21:44:37/MAIN.UPDATER.SEARCH]: parsing json...
+[2020-11-15 21:44:37/MAIN.UPDATER.SEARCH]: online version: 1.71
+[2020-11-15 21:44:37/MAIN.UPDATER.SEARCH]: current version link: https://github.com/birne420/phasmophobia-journalplus/raw/master/PhasmoJournalPlus/versions/JournalPlus_1.71.jar
+[2020-11-15 21:44:37/MAIN.UPDATER.SEARCH]: update available
+[2020-11-15 21:44:37/MAIN.UPDATER.SEARCH]: update search done
